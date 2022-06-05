@@ -31,14 +31,14 @@
 
 .messageWindow {
     background-color: darkgreen;
-    margin: 10px 10px 10px 0px;
+    margin: 10px 10px 10px 0;
     padding: 8px;
-    border-radius: 10px 10px 10px 0px;
+    border-radius: 10px 10px 10px 0;
 }
 
 .name {
-    color: fuchsia;
     font-weight: bold;
+    color: fuchsia;
 }
 
 .text {
