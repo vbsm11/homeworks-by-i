@@ -1,3 +1,31 @@
-.someClass {
-
+.main {
+    margin: 20px;
 }
+
+.task {
+    margin-bottom: 5px;
+}
+
+.delBut {
+    margin-left: 5px;
+    background-color: red;
+    color: white;
+}
+
+.high {
+    color: red;
+}
+
+.middle {
+    color: yellow;
+}
+
+.low {
+    color: green;
+}
+
+.active {
+    background-color: fuchsia;
+    color: white;
+}
+
