@@ -1,26 +1,30 @@
-import React from 'react'
+import React, {ChangeEvent} from 'react'
 import s from './Greeting.module.css'
+import {KeyboardEvent} from 'react';
 
 type GreetingPropsType = {
-    name: any // need to fix any
-    setNameCallback: any // need to fix any
-    addUser: any // need to fix any
-    error: any // need to fix any
-    totalUsers: any // need to fix any
+    name: string
+    setNameCallback: (e: ChangeEvent<HTMLInputElement>) => void
+    onKeyDownHandler: (e: KeyboardEvent<HTMLInputElement>) => void
+    addUser: () => void
+    error: boolean
+    totalUsers: number
 }
 
 // презентационная компонента (для верстальщика)
 const Greeting: React.FC<GreetingPropsType> = (
-    {name, setNameCallback, addUser, error, totalUsers} // деструктуризация пропсов
+    {name, setNameCallback, addUser, onKeyDownHandler, error, totalUsers}
 ) => {
-    const inputClass = s.error // need to fix with (?:)
+    const inputClass = error ? s.error : '';
+    const errorDivInner = error ? 'name is require' : '';
 
     return (
-        <div>
-            <input value={name} onChange={setNameCallback} className={inputClass}/>
+        <div className={s.main}>
+            <input value={name} onChange={setNameCallback} className={inputClass} onKeyDown={onKeyDownHandler} />
             <span>{error}</span>
-            <button onClick={addUser}>add</button>
-            <span>{totalUsers}</span>
+            <button disabled={error} onClick={addUser}>add</button>
+            <span className={s.count}>{totalUsers}</span>
+            <div className={s.errorDiv}>{errorDivInner}</div>
         </div>
     )
 }

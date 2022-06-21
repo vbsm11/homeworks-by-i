@@ -1,7 +1,16 @@
-.someClass {
-
+.main {
+    margin: 20px;
 }
 
 .error {
     border: 1px solid red;
+    outline: none;
+}
+
+.errorDiv {
+    color: red;
+}
+
+.count {
+    margin-left: 8px;
 }

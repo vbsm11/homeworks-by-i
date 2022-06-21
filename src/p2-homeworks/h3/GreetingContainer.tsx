@@ -1,38 +1,48 @@
-import React, {useState} from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import Greeting from './Greeting'
+import {UserType} from './HW3';
+import {KeyboardEvent} from 'react';
 
 type GreetingContainerPropsType = {
-    users: any // need to fix any
-    addUserCallback: any // need to fix any
+    users: Array<UserType>
+    addUserCallback: (name: string) => void
 }
 
-// более простой и понятный для новичков
-// function GreetingContainer(props: GreetingPropsType) {
+export const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUserCallback}) => {
+    const [name, setName] = useState<string>('')
+    const [error, setError] = useState<boolean>(false)
 
-// более современный и удобный для про :)
-// уровень локальной логики
-const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUserCallback}) => { // деструктуризация пропсов
-    const [name, setName] = useState<any>('') // need to fix any
-    const [error, setError] = useState<any>('') // need to fix any
-
-    const setNameCallback = (e: any) => { // need to fix any
-        setName('') // need to fix
+    const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => {
+        setError(false);
+        setName(e.currentTarget.value);
     }
+
     const addUser = () => {
-        alert(`Hello  !`) // need to fix
+        if (name.trim()) {
+            alert(`Hello, ${name.trim()}`)
+            addUserCallback(name.trim())
+        } else {
+            setError(true);
+        }
+        setName('')
     }
 
-    const totalUsers = 0 // need to fix
+    const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            addUser();
+        }
+    }
+
+    const totalUsers = users.length;
 
     return (
         <Greeting
             name={name}
             setNameCallback={setNameCallback}
             addUser={addUser}
+            onKeyDownHandler={onKeyDownHandler}
             error={error}
             totalUsers={totalUsers}
         />
     )
 }
-
-export default GreetingContainer
