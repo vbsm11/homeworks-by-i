@@ -4,7 +4,7 @@ import s from './HW4.module.css'
 import SuperButton from './common/c2-SuperButton/SuperButton'
 import SuperCheckbox from './common/c3-SuperCheckbox/SuperCheckbox'
 
-function HW4() {
+export function HW4() {
     const [text, setText] = useState<string>('')
     const error = text ? '' : 'error'
 
