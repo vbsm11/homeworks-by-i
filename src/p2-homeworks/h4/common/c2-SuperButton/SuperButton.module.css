@@ -1,7 +1,32 @@
-.default {
+.button {
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 10%;
+}
 
+.default {
+    background: lightgreen;
+    border: 1px solid green;
+}
+
+.default:disabled{
+    background: grey;
+    border: none;
+}
+
+.default:disabled:hover{
+    color: grey;
+}
+
+.default:hover {
+    color: darkgreen;
 }
 
 .red {
     background: red;
+    border: 1px solid darkred;
+}
+
+.red:hover {
+    color: darkred;
 }
