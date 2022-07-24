@@ -1,7 +1,26 @@
 .checkbox {
+    appearance: none;
+}
 
+.checkbox::before {
+    content: '\2713';
+    text-align: center;
+    color: white;
+    line-height: 1em;
+    width: 1em;
+    height: 1em;
+    border: 2px solid #000;
+    border-radius: 0.25em;
+    margin: 0.25em;
+    display: inline-block;
+}
+
+.checkbox:checked::before {
+    color: green;
+    border: 2px solid green;
+    outline: none;
 }
 
 .spanClassName {
-
+    font-weight: bold;
 }
